@@ -5,15 +5,14 @@ def scopus_search(query):
     URL='https://api.elsevier.com/content/search/scopus'
 
     #These are the required parameters by the Scopus' API:
-    header_params = {'apiKey':'f413a6b5f01f4ab8087dfce61b9b3c3f',
+    header_params = {'apiKey':'your_key',
                     'httpAccept': 'application/json',
                     #This is the query, encoded with URL phrasing
-                    'query': "KEY%28mouse+AND+NOT+cat+OR+dog%29"}
-
-
-
+                    #This one will return info about every paper in Scopus with Pipe sticking and prediction 
+                    #in their titles... 
+                    'query': 'TITLE("pipe sticking" AND "prediction")'} 
 
 
     #This is the GET call to the request instance:
     q = rq.get(URL,header_params)
-    return q.json()
+    return q.json() #This gets the json from the q response object. 
